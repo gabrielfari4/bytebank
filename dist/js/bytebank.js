@@ -1,19 +1,20 @@
-var saldo = 3000;
-var elementoSaldo = document.querySelector('.saldo-valor .valor');
+let saldo = 3000;
+alert('testando compilação');
+const elementoSaldo = document.querySelector('.saldo-valor .valor');
 elementoSaldo.textContent = saldo.toString();
-var elementoForm = document.querySelector('.block-nova-transacao form');
-elementoForm.addEventListener('submit', function (event) {
+const elementoForm = document.querySelector('.block-nova-transacao form');
+elementoForm.addEventListener('submit', (event) => {
     event.preventDefault();
     if (!elementoForm.checkValidity()) {
         alert('Por favor, preencha todos os campos');
         return;
     }
-    var inputTipoTransacao = elementoForm.querySelector('#tipoTransacao');
-    var inputValor = elementoForm.querySelector('#valor');
-    var inputData = elementoForm.querySelector('#data');
-    var tipoTransacao = inputTipoTransacao.value;
-    var valor = inputValor.valueAsNumber;
-    var data = new Date(inputData.value);
+    const inputTipoTransacao = elementoForm.querySelector('#tipoTransacao');
+    const inputValor = elementoForm.querySelector('#valor');
+    const inputData = elementoForm.querySelector('#data');
+    let tipoTransacao = inputTipoTransacao.value;
+    let valor = inputValor.valueAsNumber;
+    let data = new Date(inputData.value);
     if (tipoTransacao === "Depósito") {
         saldo += valor;
     }
@@ -24,7 +25,7 @@ elementoForm.addEventListener('submit', function (event) {
         alert('Tipo de transação inválido!');
     }
     elementoSaldo.textContent = saldo.toString();
-    var novaTransacao = {
+    const novaTransacao = {
         tipoTransacao: tipoTransacao,
         valor: valor,
         data: data
