@@ -10,4 +10,32 @@ elementoForm.addEventListener('submit', (event) => {
         alert('Por favor, preencha todos os campos')
         return
     }
+
+    const inputTipoTransacao = elementoForm.querySelector('#tipoTransacao')
+    const inputValor = elementoForm.querySelector('#valor')
+    const inputData = elementoForm.querySelector('#data')
+
+    let tipoTransacao = inputTipoTransacao.value
+    let valor = inputValor.value
+    let data = inputData.value
+
+    if (tipoTransacao === "Depósito") {
+        saldo += valor;
+    } else if (tipoTransacao === "Transferência" || tipoTransacao === "Pagamento de Boleto") {
+        saldo -= valor;
+    } else {
+        alert('Tipo de transação inválido!')
+    }
+
+    elementoSaldo.textContent = saldo
+
+    const novaTransacao = {
+        tipoTransacao: tipoTransacao,
+        valor: valor,
+        data: data
+    }
+
+    console.log(novaTransacao);
+    
+    elementoForm.reset();
 })
