@@ -23,7 +23,7 @@ elementoForm.addEventListener('submit', (event) => {
         alert('Tipo de transação inválido!')
     }
 
-    elementoSaldo.textContent = saldo.toLocaleString("pt-br", { currency: "BRL", style: "currency"})
+    elementoSaldo.textContent = formatarMoeda(saldo)
 
     const novaTransacao: Transacao = {
         tipoTransacao: tipoTransacao,
