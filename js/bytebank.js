@@ -1,41 +1,34 @@
-let saldo = 3000
-
-const elementoSaldo = document.querySelector('.saldo-valor .valor')
-elementoSaldo.textContent = saldo;
-
-const elementoForm = document.querySelector('.block-nova-transacao form')
-elementoForm.addEventListener('submit', (event) => {
+var saldo = 3000;
+var elementoSaldo = document.querySelector('.saldo-valor .valor');
+elementoSaldo.textContent = saldo.toString();
+var elementoForm = document.querySelector('.block-nova-transacao form');
+elementoForm.addEventListener('submit', function (event) {
     event.preventDefault();
     if (!elementoForm.checkValidity()) {
-        alert('Por favor, preencha todos os campos')
-        return
+        alert('Por favor, preencha todos os campos');
+        return;
     }
-
-    const inputTipoTransacao = elementoForm.querySelector('#tipoTransacao')
-    const inputValor = elementoForm.querySelector('#valor')
-    const inputData = elementoForm.querySelector('#data')
-
-    let tipoTransacao = inputTipoTransacao.value
-    let valor = inputValor.value
-    let data = inputData.value
-
+    var inputTipoTransacao = elementoForm.querySelector('#tipoTransacao');
+    var inputValor = elementoForm.querySelector('#valor');
+    var inputData = elementoForm.querySelector('#data');
+    var tipoTransacao = inputTipoTransacao.value;
+    var valor = inputValor.valueAsNumber;
+    var data = new Date(inputData.value);
     if (tipoTransacao === "Depósito") {
         saldo += valor;
-    } else if (tipoTransacao === "Transferência" || tipoTransacao === "Pagamento de Boleto") {
-        saldo -= valor;
-    } else {
-        alert('Tipo de transação inválido!')
     }
-
-    elementoSaldo.textContent = saldo
-
-    const novaTransacao = {
+    else if (tipoTransacao === "Transferência" || tipoTransacao === "Pagamento de Boleto") {
+        saldo -= valor;
+    }
+    else {
+        alert('Tipo de transação inválido!');
+    }
+    elementoSaldo.textContent = saldo.toString();
+    var novaTransacao = {
         tipoTransacao: tipoTransacao,
         valor: valor,
         data: data
-    }
-
+    };
     console.log(novaTransacao);
-    
     elementoForm.reset();
-})
+});
