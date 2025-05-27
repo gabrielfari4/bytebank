@@ -23,6 +23,7 @@ elementoForm.addEventListener('submit', (event) => {
         Conta.registrarTransacao(novaTransacao);
         SaldoComponent.atualizar();
         ExtratoComponent.atualizar();
+        console.log(Conta.agruparTransacoes());
         elementoForm.reset();
     }
     catch (error) {
