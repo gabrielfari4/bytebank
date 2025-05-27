@@ -1,5 +1,4 @@
 import { formatarData, formatarMoeda } from "../utils/formatters.js";
-import { FormatoData } from "../types/FormatoData.js";
 import Conta from "../types/Conta.js";
 
 
